@@ -1,23 +1,25 @@
 const webpack = require('webpack');
-
 module.exports  = {
     devtool: 'source-map',
     entry: './src/index.js',
     output : {
-        path: __dirname + "/build",
-        filename: "ChatBubble.js",
+        path: __dirname + "./build",
+        filename: "bundle.js",
 
     },
     module: {
-      loaders : [
+      loader : [
         {
           test : /\.js$/,
           exclude: /node_modules/,
-          loader: "babel-loader"
+          loader: "babel-loader",
+          query: {
+            presets : ['es2015', 'react']
+          }
         },
         {
           test: /\.css$/,
-          loaders: ['style-loaders, css-loaders']
+          // loaders: ['style-loaders, css-loaders']
         }
       ]
     },
